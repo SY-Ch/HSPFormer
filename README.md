@@ -98,10 +98,10 @@ or
 bash ./tools/pred_nyu.sh 
 ```
 
-## Acknowledgements
+<!-- ## Acknowledgements
 Thanks for the public repositories:
 - [Pytorch Lightning](https://lightning.ai/docs/pytorch/stable)
-- [DELIVER](https://github.com/jamycheung/DELIVER)
+- [DELIVER](https://github.com/jamycheung/DELIVER) -->
 
 ## License
 
