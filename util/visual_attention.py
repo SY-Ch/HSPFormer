@@ -30,13 +30,6 @@ def visulize_attention_ratio(img_path, attention_mask, save_path, ratio=1, cmap=
     normed_mask = mask / mask.max()
     normed_mask = (normed_mask * 255).astype('uint8')
 
-    # colors = [(1, 0, 0, 1-i) for i in np.linspace(0, 1, 100)]
-    # cmap_red_transparent = matplotlib.colors.LinearSegmentedColormap.from_list('mycmap', colors, N=100)
-
-    # cmap = matplotlib.colors.ListedColormap(['none','lime' ])
-
-    # cmap.set_bad(alpha=0)
-
     plt.imshow(normed_mask, alpha=0.5, interpolation='nearest', cmap=cmap)
     print("save image to: ", save_path)
     plt.subplots_adjust(top=1, bottom=0, right=1, left=0, hspace=0, wspace=0)
