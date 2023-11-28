@@ -53,12 +53,21 @@ coming soon
 
 ## Training
 
-Before training, please download [pre-trained SegFormer](https://drive.google.com/drive/folders/10XgSW8f7ghRs9fJ0dE-EV8G2E_guVsT5?usp=sharing), such as `checkpoints/pretrained/segformer/mit_b2.pth`.
+Before training, please download [pre-trained PVT v2](https://github.com/whai362/PVT/tree/v2/classification), such as `pretrained/pvt_v2_b2.pth`.
 
 ```text
 pretrained
 ├── pvt_v2_b2.pth
 └── pvt_v2_b4.pth
+```
+
+In addition, you need to go to the torch website to download the resnet weights([Resnet-18](https://download.pytorch.org/models/resnet18-f37072fd.pth), [Resnet-34](https://download.pytorch.org/models/resnet34-b627a593.pth)) and move to the specified directory:
+
+```text
+models
+├── cnn
+├── resnet18-f37072fd.pth
+└── resnet34-b627a593.pth
 ```
 
 The default number of Gpus during training is 2, to change the number of Gpus, please change the node parameter in the configuration file in the configs folder. The training code is as follows:  
