@@ -1,0 +1,13 @@
+Cython==0.29.33
+matplotlib==3.5.3
+opencv_python
+tensorboard
+timm==0.6.13
+cityscapesscripts
+pytorch_lightning
+tabulate
+# #-------------------------#
+# torch==1.11.0
+# torchvision==0.12.0
+# #-------------------------#
+# tqdm==4.64.0

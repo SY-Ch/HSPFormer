@@ -1,0 +1,31 @@
+MODEL:
+  model_names: HSPFormer_PosEmbedd
+  model_spec: hsp_v2_b2
+  load_Pretraining: 'pretraining/pvt_v2_b2.pth'
+
+DATASET:
+  dataset: NYU_depth_V2
+  name: NYU_depth_V2
+  dataroot: 'data/NYU_depth_V2'
+  ignore_index: 255
+  num_labels: 40
+
+TRAIN:
+  nepoch: 500
+  batch_size: 8
+  size: [480,640]
+  num_workers: 6
+  eval_interval: 20
+  checkpoints_dir: 'checkpoints'
+  node: 2
+
+OPTIMIZER:
+  lr            : 0.00006
+  weight_decay  : 0.05
+
+SCHEDULER:
+  warmup_epoch: 5
+  lr_warmup: linear
+  warmup_ratio: 0.000001
+
+continue_train: False
