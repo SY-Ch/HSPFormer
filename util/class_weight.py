@@ -37,14 +37,12 @@ def calculate_class_weights(folder_path, num_classes):
     
     return class_weights
 
-# 文件夹路径和类别数
-folder_path = "/home/ht/code/DELIVER/semantic/train"  # 替换为实际的文件夹路径
-num_classes = 26  # 替换为实际的类别数
+folder_path = "/home/ht/code/DELIVER/semantic/train"  
+num_classes = 26 
 
-# 计算类别权重
+
 class_weights = calculate_class_weights(folder_path, num_classes)
 
-# 输出类别权重
 class_weights_list = [class_weights[i] for i in range(num_classes)]
 print("class_weights len:", len(class_weights_list))
 print("class_weight = [")
