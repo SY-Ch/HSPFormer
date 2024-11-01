@@ -1,6 +1,6 @@
 <div align="center"> 
 
-## HSPFormer: Are the attentions in the correct positions? Inferring depth information as learnable position embedding for semantic segmentation
+## HSPFormer: Hierarchical Spatial Perception Transformer for Semantic Segmentation
 
 </div>
 
