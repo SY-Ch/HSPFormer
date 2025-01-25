@@ -279,20 +279,16 @@ class PhotoMetricDistortion(object):
         img = sample['image']
         depth = sample['depth']
         mask = sample['label']
-        # random brightness
         img = self.brightness(img)
 
         mode = random.randint(0, 1)
         if mode == 1:
             img = self.contrast(img)
 
-        # random saturation
         img = self.saturation(img)
 
-        # random hue
         img = self.hue(img)
 
-        # random contrast
         if mode == 0:
             img = self.contrast(img)
 
@@ -387,11 +383,8 @@ class RandomResize(object):
         min_ratio, max_ratio = self.ratio_range
         ratio = random.uniform(min_ratio, max_ratio)
 
-        # 计算新的尺寸
         new_height = int(img_scale[0] * ratio)
         new_width = int(img_scale[1] * ratio)
-
-        # Resize RGB and label images using OpenCV
         img = cv2.resize(img, (new_width, new_height), interpolation=cv2.INTER_LINEAR)
         depth = cv2.resize(depth, (new_width, new_height), interpolation=cv2.INTER_LINEAR)
         mask = cv2.resize(mask, (new_width, new_height), interpolation=cv2.INTER_NEAREST)
@@ -416,7 +409,6 @@ class Padding(object):
         height,width  = mask.shape
 
         if height < self.img_size[0] or  width< self.img_size[1]:
-        # 计算需要进行填充的尺寸
             # Calculate the required padding size
             pad_width = max(self.img_size[1] - width, 0)
             pad_height = max(self.img_size[0] - height, 0)
@@ -425,7 +417,6 @@ class Padding(object):
             pad_top = pad_height // 2
             pad_bottom = pad_height - pad_top
 
-            # 在图像周围进行填充
             img = F.pad(img, (pad_left, pad_right, pad_top, pad_bottom),value=0)
             depth = F.pad(depth, (pad_left, pad_right, pad_top, pad_bottom),value=0)
             mask = F.pad(mask, (pad_left, pad_right, pad_top, pad_bottom),value=255)
@@ -484,10 +475,9 @@ class RandomGaussianBlur(object):
 class RandomCrop(object):
     """Resize rgb and label images, while keep depth image unchanged. """
     def __init__(self, crop_size):
-        self.crop_size = crop_size    # size: (h, w)
+        self.crop_size = crop_size
 
     def random_crop_image_gt_depth(self, image, gt, depth):
-    # 进行随机裁剪
         i, j, h, w = transforms.RandomCrop.get_params(image, output_size=self.crop_size)
         cropped_image = transforms.functional.crop(image, i, j, h, w)
         cropped_gt = transforms.functional.crop(gt, i, j, h, w)
@@ -565,20 +555,16 @@ def resize_no_new_pixel(src_img,out_h,out_w):
 
 def pad_and_resize_image(image, size):
     target_w, target_h = size[0],size[1]
-    # 获取原始图像的尺寸
     original_w, original_h = image.size
 
-    # 计算需要填充的宽度和高度
     pad_w = target_w - original_w
     pad_h = target_h - original_h
 
-    # 计算填充的左、右、上、下边距
     left = pad_w // 2
     right = pad_w - left
     top = pad_h // 2
     bottom = pad_h - top
 
-    # 使用白色（255, 255, 255）填充图像
     padded_image = Image.new(image.mode, (target_w, target_h), 255)
     padded_image.paste(image, (left, top))
 
