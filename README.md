@@ -1,6 +1,6 @@
 <div align="center"> 
 
-## HSPFormer: Hierarchical Spatial Perception Transformer for Semantic Segmentation
+## [IEEE T-ITS] HSPFormer: Hierarchical Spatial Perception Transformer for Semantic Segmentation
 
 </div>
 
